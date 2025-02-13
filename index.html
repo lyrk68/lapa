@@ -7,123 +7,154 @@
   <link rel="stylesheet" href="valentine.css">
 </head>
 <body>
-    <div class="background">
-      <canvas id="heartCanvas"></canvas>
-    </div>
-  
-    <!-- Texto largo en la parte izquierda -->
-    <div class="left-text">
-      <h2>Para la persona más especial de mi vida ❤️</h2>
-      <p>
-        Mi amor, desde el primer momento en que te vi en 2022, siempre supe que había llegado la chica perfecta a mi vida. 
-        No hay palabras suficientes para describir lo mucho que sentí y siempre voy a sentír por vos, quiero que sepas que estar cada día a tu lado 
-        fué un regalo que atesoro con toda mi alma. 💖
-      </p>
-      <p>
-        Fuiste mi alegría, mi paz y mi lugar seguro. No importa lo que pase, SIEMPRE recordaré eso y voy a seguir, 
-        apoyándote, amándote y extrañando compartir cada instante a tu lado. Cada sonrisa tuya ilumina mi mundo, 
-        y cada abrazo tuyo es el refugio más hermoso que puedo tener. ✨
-      </p>
-      <p>
-        Gracias por ser quien sos, por compartir tu vida conmigo y por llenar mis días de amor y felicidad. 
-        Te amo con todo mi ser, y siempre te amaré, incluso si ya no hablamos. 💕
-      </p>
-      <p>
-        Si algún día necesitas a alguien para hablar o pasar el rato, solo dime y yo estaré contigo, la promesa de no dejarte sola sigue ahí. ❤️
-      </p>
-    </div>
-  
-    <!-- Texto largo en la parte derecha -->
-    <div class="right-text">
-      <h2>Un amor que nunca se apagará 💞</h2>
-      <p>
-        Desde aquel primer instante en que nuestras miradas se cruzaron, sentí algo especial. 
-        Algo que no puedo explicar, pero que me llena el alma de felicidad. 
-      </p>
-      <p>
-        Cada momento contigo fué mágico, cada frase tuya se almacena en mi corazón. 
-        No hay nadie que pueda apagar lo que siento por ti. 💖
-      </p>
-      <p>
-        Prometí estar a tu lado en los días malos y buenos. 
-        En cada risa y en cada lágrima, en cada sueño y en cada meta. Contigo, siempre, y 
-        como siempre te digo no me gusta romper mis promesas. ✨
-      </p>
-      <p>
-        Fuiste mi destino, mi persona favorita, el amor más puro y sincero que he conocido y que en mi puta vida voy a volver a conocer. 
-        Gracias por existir, tiki. ❤️
-      </p>
-    </div>
-  
-    <div class="container">
-      <h1 class="title">Siempre estaré para ti ❤️</h1>
-      
-      <div class="slider">
-        <button class="prev" onclick="prevSlide()">❮</button>
-        <div class="slide-container">
-          <div class="slides">
-            <div class="slide">
-              <div class="image-container square">
-                <img src="teamo1.jpeg" alt="">
+
+  <!-- Fondo animado de corazones -->
+  <div class="background">
+    <canvas id="heartCanvas"></canvas>
+  </div>
+
+  <!-- Contenedor principal de la página -->
+  <div class="main-container">
+    
+    <!-- Layout en dos columnas: texto (izq + der) y slider -->
+    <div class="layout">
+
+      <!-- Sección de textos (izquierda y derecha) -->
+      <div class="text-container">
+
+        <!-- Texto largo en la parte izquierda -->
+        <div class="left-text">
+          <h2>Para la persona más especial de mi vida ❤️</h2>
+          <p>
+            Mi amor, desde el primer momento en que te vi en 2022, siempre supe que había llegado la chica perfecta a mi vida. 
+            No hay palabras suficientes para describir lo mucho que sentí y siempre voy a sentír por vos, quiero que sepas que estar cada día a tu lado 
+            fué un regalo que atesoro con toda mi alma. 💖
+          </p>
+          <p>
+            Fuiste mi alegría, mi paz y mi lugar seguro. No importa lo que pase, SIEMPRE recordaré eso y voy a seguir, 
+            apoyándote, amándote y extrañando compartir cada instante a tu lado. Cada sonrisa tuya ilumina mi mundo, 
+            y cada abrazo tuyo es el refugio más hermoso que puedo tener. ✨
+          </p>
+          <p>
+            Gracias por ser quien sos, por compartir tu vida conmigo y por llenar mis días de amor y felicidad. 
+            Te amo con todo mi ser, y siempre te amaré, incluso si ya no hablamos. 💕
+          </p>
+          <p>
+            Si algún día necesitas a alguien para hablar o pasar el rato, solo dime y yo estaré contigo, la promesa de no dejarte sola sigue ahí. ❤️
+          </p>
+        </div>
+
+        <!-- Texto largo en la parte derecha -->
+        <div class="right-text">
+          <h2>Un amor que nunca se apagará 💞</h2>
+          <p>
+            Desde aquel primer instante en que nuestras miradas se cruzaron, sentí algo especial. 
+            Algo que no puedo explicar, pero que me llena el alma de felicidad. 
+          </p>
+          <p>
+            Cada momento contigo fué mágico, cada frase tuya se almacena en mi corazón. 
+            No hay nadie que pueda apagar lo que siento por ti. 💖
+          </p>
+          <p>
+            Prometí estar a tu lado en los días malos y buenos. 
+            En cada risa y en cada lágrima, en cada sueño y en cada meta. Contigo, siempre, y 
+            como siempre te digo no me gusta romper mis promesas. ✨
+          </p>
+          <p>
+            Fuiste mi destino, mi persona favorita, el amor más puro y sincero que he conocido y que en mi puta vida voy a volver a conocer. 
+            Gracias por existir, tiki. ❤️
+          </p>
+        </div>
+
+      </div>
+      <!-- Fin de .text-container -->
+
+      <!-- Sección del slider -->
+      <div class="slider-container">
+        <h1 class="title">Siempre estaré para ti ❤️</h1>
+        
+        <div class="slider">
+          <button class="prev" onclick="prevSlide()">❮</button>
+          <div class="slide-container">
+            <div class="slides">
+
+              <!-- Slide 1 (sin caption) -->
+              <div class="slide">
+                <div class="image-container square">
+                  <img src="teamo1.jpeg" alt="">
+                </div>
               </div>
-              <p class="caption">Tu sonrisa ilumina mi mundo 🌟</p>
-            </div>
-            <div class="slide">
-              <div class="image-container square">
-                <img src="teamo2.jpeg" alt="">
+
+              <!-- Slide 2 (sin caption) -->
+              <div class="slide">
+                <div class="image-container square">
+                  <img src="teamo2.jpeg" alt="">
+                </div>
               </div>
-              <p class="caption">Cada momento contigo es un tesoro 💖</p>
-            </div>
-            <div class="slide">
-              <div class="image-container square">
-                <img src="teamo3.jpeg" alt="">
+
+              <!-- Slide 3 (sin caption) -->
+              <div class="slide">
+                <div class="image-container square">
+                  <img src="teamo3.jpeg" alt="">
+                </div>
               </div>
-              <p class="caption">Eres mi felicidad infinita 💫</p>
-            </div>
-            <div class="slide">
-              <div class="image-container square">
-                <img src="teamo4.jpeg" alt="">
+
+              <!-- Slide 4 (sin caption) -->
+              <div class="slide">
+                <div class="image-container square">
+                  <img src="teamo4.jpeg" alt="">
+                </div>
               </div>
-              <p class="caption">Contigo, el tiempo se detiene ⏳💞</p>
-            </div>
-            <div class="slide">
-              <div class="image-container square">
-                <img src="teamo5.jpeg" alt="">
+
+              <!-- Slide 5 (sin caption) -->
+              <div class="slide">
+                <div class="image-container square">
+                  <img src="teamo5.jpeg" alt="">
+                </div>
               </div>
-              <p class="caption">Eres mi persona favorita en el mundo 🌎💕</p>
-            </div>
-            <div class="slide">
-              <div class="image-container square">
-                <img src="teamo6.jpeg" alt="">
+
+              <!-- Slide 6 (sin caption) -->
+              <div class="slide">
+                <div class="image-container square">
+                  <img src="teamo6.jpeg" alt="">
+                </div>
               </div>
-              <p class="caption">Nuestro amor es eterno como las estrellas ✨❤️</p>
-            </div>
-            <div class="slide">
-              <div class="image-container square">
-                <img src="teamo7.jpeg" alt="">
+
+              <!-- Slide 7 (sin caption) -->
+              <div class="slide">
+                <div class="image-container square">
+                  <img src="teamo7.jpeg" alt="">
+                </div>
               </div>
-              <p class="caption">Cada día contigo es un regalo 🎁💘</p>
+
             </div>
           </div>
+          <button class="next" onclick="nextSlide()">❯</button>
         </div>
-        <button class="next" onclick="nextSlide()">❯</button>
-      </div>
   
-      <button class="love-button" id="playMusic">Nuestra música 💕</button>
+        <button class="love-button" id="playMusic">Nuestra música 💕</button>
+      </div>
+      <!-- Fin de .slider-container -->
+
     </div>
-    
+    <!-- Fin de .layout -->
+
+    <!-- Contenedor para la música oculta -->
     <div class="gallery hidden">
       <iframe id="backgroundMusic" allow="autoplay" style="display:none;"></iframe>
     </div>
-    
-    <script>
-      document.getElementById("playMusic").addEventListener("click", function() {
-        let musicFrame = document.getElementById("backgroundMusic");
-        musicFrame.src = "https://www.youtube.com/embed/iIkVGAjIdKk?autoplay=1&loop=1&playlist=iIkVGAjIdKk&controls=0&showinfo=0&rel=0";
-      });
-    </script>
-    
-    <script src="script.js"></script>
-  </body>
-  
+
+  </div>
+  <!-- Fin de .main-container -->
+
+  <!-- Scripts -->
+  <script>
+    document.getElementById("playMusic").addEventListener("click", function() {
+      let musicFrame = document.getElementById("backgroundMusic");
+      musicFrame.src = "https://www.youtube.com/embed/iIkVGAjIdKk?autoplay=1&loop=1&playlist=iIkVGAjIdKk&controls=0&showinfo=0&rel=0";
+    });
+  </script>
+
+  <script src="script.js"></script>
+</body>
 </html>
