@@ -1,221 +1,240 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;700&display=swap');
 
-/* Quita el uso de "display: flex" y "height: 100vh" en <body> 
-   para permitir el scroll normal en móviles. */
-body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(to bottom right, #ff9a9e, #fad0c4);
-    margin: 0;
-    padding: 0;
-    text-align: center; /* Centra textos de forma global si lo deseas */
-    /* NO overflow: hidden; */
+/* ------------------------------
+   RESET / BASE
+------------------------------ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Fondo con el canvas de corazones */
+/* ------------------------------
+   BODY & BACKGROUND
+------------------------------ */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to bottom right, #ff9a9e, #fad0c4);
+  margin: 0;
+  padding: 0;
+  text-align: center; /* Centra textos de forma global si lo deseas */
+  /* Quita overflow: hidden para que haya scroll en móvil */
+}
+
 .background {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: -1;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
 
 #heartCanvas {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
-/* 
-  Contenedor principal para toda la página. 
-  Limita el ancho máximo y centra el contenido. 
-*/
+/* ------------------------------
+   LAYOUT PRINCIPAL
+------------------------------ */
+/* Contenedor que agrupa todo (si lo deseas) */
 .main-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-/* Layout en dos columnas para PC, 
-   y en columna (uno debajo del otro) para móviles */
+/* Contenedor flex que tiene left-text, right-text, y .container (slider) */
 .layout {
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
-    justify-content: space-between;
-    margin-bottom: 20px; /* Espacio debajo del bloque de textos */
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
 
-/* Contenedor de los textos (izquierda y derecha) */
-.text-container {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 20px; /* Espacio entre los dos textos */
+/* Orden por defecto (PC) */
+.left-text {
+  order: 1;
+  flex: 1;
 }
 
-/* Bloques de texto */
+.right-text {
+  order: 2;
+  flex: 1;
+}
+
+/* El slider está dentro de .container */
+.container {
+  order: 3;
+  flex: 1;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  padding: 20px;
+}
+
+/* ------------------------------
+   TEXTOS IZQUIERDA Y DERECHA
+------------------------------ */
 .left-text, 
 .right-text {
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 15px;
-    padding: 20px;
-    color: #000;
-    text-align: left; /* Por defecto, alineado a la izquierda */
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  padding: 20px;
+  color: #000;
+  text-align: left; /* Alineación del texto */
 }
 
-/* Bloque del slider */
-.slider-container {
-    flex: 1;
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 15px;
-    padding: 20px;
-}
-
-/* Título dentro del slider-container (opcional) */
+/* ------------------------------
+   TÍTULO (Opcional, dentro del slider)
+------------------------------ */
 .title {
-    font-family: 'Pacifico', cursive;
-    font-size: 24px;
-    color: #fff;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    margin-bottom: 15px;
+  font-family: 'Pacifico', cursive;
+  font-size: 24px;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  margin-bottom: 15px;
 }
 
-/* Slider */
+/* ------------------------------
+   SLIDER
+------------------------------ */
 .slider {
-    position: relative;
-    width: 100%;
-    /* No forzamos altura fija; se adaptará al contenido */
-    overflow: hidden;
-    border-radius: 15px;
-    margin-bottom: 15px; /* Espacio debajo del slider */
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 15px;
+  margin-bottom: 15px; /* Espacio debajo del slider */
 }
 
 .slide-container {
-    width: 100%;
-    height: auto; /* Se ajusta según la imagen */
-    overflow: hidden;
+  width: 100%;
+  height: auto; /* Se ajusta según la imagen */
+  overflow: hidden;
 }
 
 .slides {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
+  display: flex;
+  transition: transform 0.5s ease-in-out;
 }
 
-/* Cada "slide" ocupa 100% del ancho */
 .slide {
-    min-width: 100%;
-    position: relative;
-    text-align: center; 
+  min-width: 100%;
+  position: relative;
+  text-align: center; 
 }
 
 /* Contenedor de la imagen */
 .image-container.square {
-    width: 100%;
-    height: auto;
-    border-radius: 15px;
-    overflow: hidden;
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  overflow: hidden;
 }
 
 .image-container.square img {
-    width: 100%;
-    height: auto;        /* Para que no se deforme */
-    object-fit: cover;   /* "cover" o "contain", según prefieras */
-    display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* Usa cover o contain, según prefieras */
+  display: block;
 }
 
-/* Caption debajo de la imagen */
-.caption {
-    margin-top: 10px;
-    background: rgba(0, 0, 0, 0.6);
-    color: #fff;
-    padding: 10px 15px;
-    border-radius: 10px;
-    font-size: 14px;
-    display: inline-block;
-}
-
-/* Botones de navegación del slider */
+/* Botones del slider */
 .prev, .next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.5);
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    padding: 5px 10px;
-    border-radius: 50%;
-    transition: 0.3s;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 50%;
+  transition: 0.3s;
 }
 
 .prev:hover, .next:hover {
-    background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.8);
 }
 
-.prev { left: 10px; }
-.next { right: 10px; }
+.prev {
+  left: 10px;
+}
 
-/* Botón para la música */
+.next {
+  right: 10px;
+}
+
+/* ------------------------------
+   BOTÓN DE MÚSICA
+------------------------------ */
 .love-button {
-    margin-top: 15px;
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 10px;
-    background: #ff4e50;
-    color: white;
-    cursor: pointer;
-    transition: 0.3s;
+  margin-top: 15px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  background: #ff4e50;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 .love-button:hover {
-    background: #fc7177;
+  background: #fc7177;
 }
 
-/* MEDIA QUERIES: Ajustes para móviles */
+/* ------------------------------
+   MEDIA QUERIES (MÓVILES)
+------------------------------ */
 @media (max-width: 768px) {
 
-    .main-container {
-        padding: 10px;
-    }
+  /* Cambiamos el layout a columna */
+  .layout {
+    flex-direction: column;
+  }
 
-    /* Cambiamos el layout a columna */
-    .layout {
-        flex-direction: column;
-    }
+  /* Nuevo orden en móvil:
+     1º .container (fotos), 
+     2º .left-text,
+     3º .right-text 
+  */
+  .container {
+    order: 1;
+  }
+  .left-text {
+    order: 2;
+    text-align: center; /* Opcional: centra el texto en móvil */
+  }
+  .right-text {
+    order: 3;
+    text-align: center; /* Opcional: centra el texto en móvil */
+  }
 
-    /* Texto y slider ocupan 100% */
-    .text-container, .slider-container {
-        width: 100%;
-    }
+  /* Ajuste de anchos */
+  .left-text, .right-text, .container {
+    flex: none;   /* Para que no se intenten estirar */
+    width: 100%;  /* Ocupan todo el ancho */
+    margin-bottom: 15px;
+  }
 
-    /* Alineamos los bloques de texto al centro si se prefiere */
-    .left-text, .right-text {
-        text-align: center;
-    }
+  .image-container.square {
+    max-width: 100%;
+    margin: 0 auto;
+  }
 
-    /* Ajuste del slider (quitar altura fija) */
-    .slider {
-        margin-bottom: 15px;
-    }
+  .prev, .next {
+    font-size: 20px;
+    padding: 5px;
+  }
 
-    .image-container.square {
-        max-width: 100%;
-        margin: 0 auto;
-    }
-
-    .prev, .next {
-        font-size: 20px;
-        padding: 5px;
-    }
-
-    .love-button {
-        font-size: 14px;
-        padding: 8px 12px;
-    }
+  .love-button {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
 }
