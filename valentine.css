@@ -172,3 +172,41 @@ body {
 .love-button:hover {
     background: #fc7177;
 }
+@media (max-width: 768px) {
+  .container {
+    width: 90%;
+    padding: 10px;
+  }
+
+  .left-text, .right-text {
+    width: 100%; /* Para que los textos ocupen toda la pantalla */
+    text-align: center; /* Centra el texto en móviles */
+    padding: 10px;
+  }
+
+  .slider {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .slide-container {
+    width: 100%;
+    overflow-x: auto; /* Permite hacer scroll horizontal si es necesario */
+  }
+
+  .image-container {
+    width: 90%;
+    max-width: 300px; /* Tamaño máximo para evitar imágenes enormes */
+    margin: 0 auto;
+  }
+
+  .prev, .next {
+    font-size: 24px; /* Reduce el tamaño de las flechas del slider */
+  }
+
+  .love-button {
+    font-size: 16px;
+    padding: 8px 12px;
+  }
+}
+
